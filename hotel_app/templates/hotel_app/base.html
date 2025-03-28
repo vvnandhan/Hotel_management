@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Hotel Management App{% endblock %}</title>
+  <!-- Google Fonts: Poppins for navigation -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<!-- Added block for body_class -->
+<body class="{% block body_class %}{% endblock %}">
+  <!-- Animated background layer -->
+  <div class="background-animation"></div>
+
+  <!-- Header with navigation -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'hotel_list' %}">Hotels</a></li>
+        <li><a href="{% url 'room_list' %}">Rooms</a></li>
+        <li><a href="{% url 'employee_list' %}">Employees</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main content area in a centered container -->
+  <main>
+    <div class="container">
+      {% block content %}
+      <!-- Page-specific content goes here -->
+      {% endblock %}
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Hotel Management App</p>
+  </footer>
+</body>
+</html>

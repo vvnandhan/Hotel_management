@@ -1,0 +1,20 @@
+{% extends 'hotel_app/base.html' %}
+
+{% block title %}Hotels{% endblock %}
+
+{% block content %}
+  <h1>Hotels</h1>
+  <a href="{% url 'hotel_create' %}"><button>Add New Hotel</button></a>
+  <br><br>
+  <ul>
+      {% for hotel in hotels %}
+          <li>
+              <strong>{{ hotel.name }}</strong> - {{ hotel.address }}, {{ hotel.city }}, {{ hotel.country }}
+              <a href="{% url 'hotel_update' hotel.pk %}"><button>Edit</button></a>
+              <a href="{% url 'hotel_delete' hotel.pk %}"><button>Delete</button></a>
+          </li>
+      {% empty %}
+          <li>No hotels found.</li>
+      {% endfor %}
+  </ul>
+{% endblock %}

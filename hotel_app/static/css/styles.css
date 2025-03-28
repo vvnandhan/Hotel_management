@@ -1,0 +1,310 @@
+/* Reset default margins/paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #fff;
+  position: relative;
+  overflow-x: hidden;  /* Horizontal scroll hidden, vertical is normal */
+  background: transparent; /* Let .background-animation show */
+}
+
+/* Dark animated gradient background */
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, #000000, #111111, #000000, #111111);
+  background-size: 400% 400%;
+  animation: gradientAnimation 20s ease infinite;
+  z-index: -1;
+}
+
+@keyframes gradientAnimation {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Header and Navigation */
+header {
+  background: rgba(0, 0, 0, 0.9);
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.8);
+}
+
+nav ul {
+  list-style: none;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+  transform: scale(1.1);
+  color: #ffcc00;
+}
+
+/* Main content area */
+main {
+  padding: 100px 20px 60px; /* Extra top padding to clear the fixed header */
+}
+
+/* Container: fully dark background */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #111;  /* Opaque dark background */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+  padding: 30px;
+}
+
+/* Footer */
+footer {
+  background: rgba(0, 0, 0, 0.9);
+  text-align: center;
+  padding: 15px 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.8);
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* Button Styling */
+button {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: transform 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
+
+button:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-3px);
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+table th,
+table td {
+  border: 1px solid #555;  /* Softer than pure white */
+  padding: 12px;
+  text-align: left;
+}
+
+table thead {
+  background-color: rgba(255,255,255,0.1);
+}
+
+/* Form Elements */
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background-color: #222;  /* Dark input background */
+  color: #fff;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: none;
+  border-color: #ffcc00;
+}
+
+/* Link Styling */
+a {
+  color: #fff;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #ffcc00;
+}
+
+/* =============================================================
+   HOME PAGE OVERRIDES
+   Use a unique body class (e.g. "home-aurora-page") set in home.html
+   to remove the container box & center text vertically/horizontally.
+   Also remove vertical scroll bar.
+   ============================================================= */
+body.home-aurora-page {
+  /* Hide vertical scroll bar on home page */
+  overflow-y: hidden;
+}
+
+/* Remove container background & box styling only on home page */
+body.home-aurora-page .container {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Center the entire content area in the viewport */
+body.home-aurora-page main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 70px); /* adjust if needed for footer space */
+  margin: 0;
+  padding: 0;
+}
+
+/* Aurora text styling */
+.home-aurora {
+  background: transparent !important;
+}
+
+.home-aurora .aurora-content {
+  background: transparent !important;
+  text-align: center;
+}
+
+.home-aurora .aurora-title,
+.home-aurora .aurora-subtitle {
+  background: transparent !important;
+  color: #fff;
+  margin: 0 auto;
+}
+
+.home-aurora .aurora-title {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 800;
+  letter-spacing: clamp(-1.75px, -0.25vw, -3.5px);
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.home-aurora .aurora-subtitle {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Aurora overlay (unchanged) */
+.home-aurora .aurora {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  mix-blend-mode: darken;
+  pointer-events: none;
+}
+
+.home-aurora .aurora__item {
+  overflow: hidden;
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  background-color: var(--clr-1, #00c2ff);
+  border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+  filter: blur(var(--blur, 1rem));
+  mix-blend-mode: overlay;
+}
+
+.home-aurora .aurora__item:nth-of-type(1) {
+  top: -50%;
+  animation: aurora-border 6s ease-in-out infinite,
+             aurora-1 12s ease-in-out infinite alternate;
+}
+.home-aurora .aurora__item:nth-of-type(2) {
+  background-color: var(--clr-3, #ffc640);
+  right: 0;
+  top: 0;
+  animation: aurora-border 6s ease-in-out infinite,
+             aurora-2 12s ease-in-out infinite alternate;
+}
+.home-aurora .aurora__item:nth-of-type(3) {
+  background-color: var(--clr-2, #33ff8c);
+  left: 0;
+  bottom: 0;
+  animation: aurora-border 6s ease-in-out infinite,
+             aurora-3 8s ease-in-out infinite alternate;
+}
+.home-aurora .aurora__item:nth-of-type(4) {
+  background-color: var(--clr-4, #e54cff);
+  right: 0;
+  bottom: -50%;
+  animation: aurora-border 6s ease-in-out infinite,
+             aurora-4 24s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-1 {
+  0%   { top: 0; right: 0; }
+  50%  { top: 100%; right: 75%; }
+  75%  { top: 100%; right: 25%; }
+  100% { top: 0; right: 0; }
+}
+
+@keyframes aurora-2 {
+  0%   { top: -50%; left: 0%; }
+  60%  { top: 100%; left: 75%; }
+  85%  { top: 100%; left: 25%; }
+  100% { top: -50%; left: 0%; }
+}
+
+@keyframes aurora-3 {
+  0%   { bottom: 0; left: 0; }
+  40%  { bottom: 100%; left: 75%; }
+  65%  { bottom: 40%; left: 50%; }
+  100% { bottom: 0; left: 0; }
+}
+
+@keyframes aurora-4 {
+  0%   { bottom: -50%; right: 0; }
+  50%  { bottom: 0%; right: 40%; }
+  90%  { bottom: 50%; right: 25%; }
+  100% { bottom: -50%; right: 0; }
+}
+
+@keyframes aurora-border {
+  0%   { border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%; }
+  25%  { border-radius: 47% 29% 39% 49% / 61% 19% 66% 26%; }
+  50%  { border-radius: 57% 23% 47% 72% / 63% 17% 66% 33%; }
+  75%  { border-radius: 28% 49% 29% 100% / 93% 20% 64% 25%; }
+  100% { border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%; }
+}
+

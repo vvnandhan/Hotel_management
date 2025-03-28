@@ -1,0 +1,13 @@
+{% extends 'hotel_app/base.html' %}
+
+{% block title %}{% if object %}Update Room{% else %}Add Room{% endif %}{% endblock %}
+
+{% block content %}
+<h1>{% if object %}Update Room{% else %}Add Room{% endif %}</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">{% if object %}Update{% else %}Submit{% endif %}</button>
+</form>
+<a href="{% url 'room_list' %}">Back to Room List</a>
+{% endblock %}
